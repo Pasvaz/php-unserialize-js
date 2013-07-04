@@ -139,17 +139,16 @@ function phpUnserialize (phpstr) {
       } //end readType
 
     , parseNext = function () {
-        var type = readType();
+        var type = readType().toLowerCase();
         switch (type) {
           case 'i': return parseAsInt();
           case 'd': return parseAsFloat();
           case 'b': return parseAsBoolean();
           case 's': return parseAsString();
           case 'a': return parseAsArray();
-          case 'O': return parseAsObject();
+          case 'o': return parseAsObject();
           case 'r': return parseAsRef();
-          case 'R': return parseAsRef();
-          case 'N': return null;
+          case 'n': return null;
           default:
             throw {
               name: "Parse Error",
